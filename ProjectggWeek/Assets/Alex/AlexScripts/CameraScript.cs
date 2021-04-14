@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     public AnimationCurve zoomCam;
+    public AnimationCurve dezoomCam;
     GameObject centerZoom1;
     float zoomForce1;
     float originalSize;
@@ -29,21 +30,38 @@ public class CameraScript : MonoBehaviour
         float elapsed = 0.0f;
         float posX = 0;
         float posY = 0;
+        float ratio = 0.0f;
         centerZoom1 = centerZoom;
         zoomForce1 = zoomForce;
         while (elapsed < duration)
         {
-            posX = Mathf.Lerp(startTransform.x, centerZoom1.transform.position.x, zoomCam.Evaluate(Time.time));
-            posY = Mathf.Lerp(startTransform.y, centerZoom1.transform.position.y, zoomCam.Evaluate(Time.time));
+            ratio = elapsed / duration;
+            ratio = zoomCam.Evaluate(ratio);
+            posX = Mathf.Lerp(startTransform.x, centerZoom1.transform.position.x, ratio);
+            posY = Mathf.Lerp(startTransform.y, centerZoom1.transform.position.y, ratio);
             this.transform.position = new Vector3(posX, posY, -10);
 
-            GetComponent<Camera>().orthographicSize = Mathf.Lerp(originalSize, zoomForce1, zoomCam.Evaluate(Time.time));
+            GetComponent<Camera>().orthographicSize = Mathf.Lerp(originalSize, zoomForce1, ratio);
 
             elapsed += Time.deltaTime;
             yield return null;
         }
-        this.transform.position = startTransform;
-        GetComponent<Camera>().orthographicSize = originalSize;
+        elapsed = 0.0f;
+        while (elapsed < duration)
+        {
+            ratio = elapsed / duration;
+            ratio = dezoomCam.Evaluate(ratio);
+            posX = Mathf.Lerp(centerZoom1.transform.position.x, startTransform.x, ratio);
+            posY = Mathf.Lerp(centerZoom1.transform.position.y,startTransform.y, ratio);
+            this.transform.position = new Vector3(posX, posY, -10);
+
+            GetComponent<Camera>().orthographicSize = Mathf.Lerp(zoomForce1 , originalSize , ratio);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        //this.transform.position = startTransform;
+        //GetComponent<Camera>().orthographicSize = originalSize;
     }
     public void CamShake(float duration, float magnitude)
     {

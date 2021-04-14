@@ -9,14 +9,13 @@ public class Dialog : MonoBehaviour
         A,
         Z,
         E,
-        R,
+        D,
         Q,
         S
     }
     Inputs inputNeeded;
     int numberOfInputs = Inputs.GetValues(typeof(Inputs)).Length;
     CameraScript cam;
-    public GameObject Player;
     public GameObject Boss;
     bool answered = false;
     float delayAnswers = 2.0f;
@@ -26,6 +25,7 @@ public class Dialog : MonoBehaviour
     public string[] textsAngry;
     int currentIndexDialog = 0;
     public float showTextSpeed = 0.1f;
+    public float hideTextSpeed = 0.05f;
     PopDialog currentDialog;
 
     public GameObject dialogPrefab;
@@ -33,13 +33,13 @@ public class Dialog : MonoBehaviour
     void Start()
     {
         inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
-        Player = GameObject.Find("Player");
         Boss = GameObject.Find("Boss");
 
         Debug.Log(Inputs.GetName(typeof(Inputs), inputNeeded));
         cam = GameObject.Find("MainCamera").GetComponent<CameraScript>();
         currentDialog = Instantiate<GameObject>(dialogPrefab).GetComponentInChildren<PopDialog>();
         currentDialog.showTextDelay = showTextSpeed;
+        currentDialog.hideTextDelay = hideTextSpeed;
         currentDialog.firstText = textsQuestions[0];
         currentDialog.ChangeText(textsQuestions[currentIndexDialog]);
 
@@ -81,7 +81,7 @@ public class Dialog : MonoBehaviour
         {
             answered = true;
             currentIndexDialog++;
-            cam.CamZoom(Player, 2, 4);
+            cam.CamZoom(Boss, 4, 2);
             currentDialog.ChangeText(textsQuestions[currentIndexDialog]);
             inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
             Debug.Log(Inputs.GetName(typeof(Inputs), inputNeeded));

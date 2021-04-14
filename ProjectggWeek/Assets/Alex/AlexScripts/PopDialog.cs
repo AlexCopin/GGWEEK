@@ -10,6 +10,7 @@ public class PopDialog : MonoBehaviour
     private string currentText = "";
     string previousText = "";
     public float showTextDelay;
+    public float hideTextDelay;
     public GameObject bubbleBar;
     public Text textBubble;
 
@@ -17,8 +18,6 @@ public class PopDialog : MonoBehaviour
     public float lerpValue = 2.0f;
 
     bool showingText = false;
-    bool hidingText = false;
-    bool nextChangeText = false;
     void Start()
     {
         bubbleBar = GameObject.Find("BubbleBar");
@@ -29,27 +28,12 @@ public class PopDialog : MonoBehaviour
 
     void Update()
     {
-        if(showingText) 
-        {
-            bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1, lerp), Mathf.Lerp(0, 1, lerp), 1);
-            textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1, lerp), Mathf.Lerp(0, 1, lerp), 1);
+            bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
+            textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
             if (lerp > lerpValue)
             {
                 lerp = 0.0f;
-                showingText = false;
             }
-        }
-        if (hidingText) 
-        {
-            bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(1,0, lerp), Mathf.Lerp(1,0, lerp), 1);
-            textBubble.transform.localScale = new Vector3(Mathf.Lerp(1, 0, lerp), Mathf.Lerp(1, 0, lerp), 1);
-            lerp += Time.deltaTime;
-            if (lerp > lerpValue)
-            {
-                lerp = 0.0f;
-                hidingText = false;
-            }
-        }
         lerp += Time.deltaTime;
     }
 
@@ -59,29 +43,23 @@ public class PopDialog : MonoBehaviour
     }
     public IEnumerator ShowText(string text)
     {
-        Debug.Log("prout");
         previousText = text;
-        showingText = true;
-        hidingText = false;
-        for (int i = 0; i < text.Length; i++) 
+        for (int i = 0; i <= text.Length; i++) 
         {
 
             currentText = text.Substring(0, i);
             textBubble.text = currentText;
             yield return new WaitForSeconds(showTextDelay);
         }
-        nextChangeText = false;
     }
 
     public IEnumerator HideText(string text)
     {
-        showingText = false;
-        hidingText = true;
         for (int j = previousText.Length - 1; j >= 0; j--)
         {
             currentText = previousText.Substring(0, j);
             textBubble.text = currentText;
-            yield return new WaitForSeconds(showTextDelay);
+            yield return new WaitForSeconds(hideTextDelay);
         }
         StartCoroutine(ShowText(text));
     }
