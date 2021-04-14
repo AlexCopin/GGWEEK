@@ -41,6 +41,7 @@ public class Dialog : MonoBehaviour
         currentDialog = Instantiate<GameObject>(dialogPrefab).GetComponentInChildren<PopDialog>();
         currentDialog.showTextDelay = showTextSpeed;
         currentDialog.firstText = textsQuestions[0];
+        currentDialog.ChangeText(textsQuestions[currentIndexDialog]);
 
     }
 

@@ -9,7 +9,6 @@ public class CameraScript : MonoBehaviour
     float zoomForce1;
     float originalSize;
     public Vector3 startTransform;
-    bool zooming = false;
     // Start is called before the first frame update
     void Start()
     {

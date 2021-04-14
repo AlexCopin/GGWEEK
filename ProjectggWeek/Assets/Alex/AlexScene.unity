@@ -381,8 +381,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 3.4041297
-      value: 0.99999994
+      time: 1.5248421
+      value: 0.41844556
+      inSlope: 0.43268746
+      outSlope: 0.43268746
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 3.4183068
+      value: 0.99764055
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -491,10 +500,6 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 269802683}
-    - target: {fileID: 2280101085693339552, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: dialogPrefab
-      value: 
-      objectReference: {fileID: 2814639833836413835, guid: fb0881c7312476c439148dd96a20730c, type: 3}
     - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
       propertyPath: m_RootOrder
       value: 1
