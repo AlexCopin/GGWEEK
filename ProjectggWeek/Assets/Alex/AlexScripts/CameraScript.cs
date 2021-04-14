@@ -85,6 +85,5 @@ public class CameraScript : MonoBehaviour
             yield return null;
         }
         this.transform.position = startTransform;
-        //GetComponent<Camera>().orthographicSize = sizeOrtho;
     }
 }

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss: {fileID: 0}
+  delayAnswersValue: 3
   animCurve:
     serializedVersion: 2
     m_Curve:
@@ -74,22 +75,18 @@ MonoBehaviour:
   - osef3
   - osef4
   - osef5
-  - osef6
-  - osef7
-  - osef8
-  - osef9
   textsStep2:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - balec1
+  - balec2
+  - balec3
+  - balec4
+  - balec5
+  - balec6
+  - balec7
+  - balec8
+  - balec9
+  - balec10
+  - balec11
   textsStep3:
   - 
   - 
@@ -106,6 +103,7 @@ MonoBehaviour:
   - BITCH
   - OKAY BUT NO
   - WHY ARE YOU SO DUMB?
+  countSimonStep2Value: 3
   showTextSpeed: 0.1
   hideTextSpeed: 0.02
   dialogPrefab: {fileID: 2814639833836413835, guid: fb0881c7312476c439148dd96a20730c, type: 3}

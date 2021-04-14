@@ -17,7 +17,6 @@ public class PopDialog : MonoBehaviour
     float lerp = 0.0f;
     public float lerpValue = 2.0f;
 
-    bool showingText = false;
     void Start()
     {
         bubbleBar = GameObject.Find("BubbleBar");
@@ -28,12 +27,12 @@ public class PopDialog : MonoBehaviour
 
     void Update()
     {
-            bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
-            textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
-            if (lerp > lerpValue)
-            {
-                lerp = 0.0f;
-            }
+        bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
+        textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
+        if (lerp > lerpValue)
+        {
+            lerp = 0.0f;
+        }
         lerp += Time.deltaTime;
     }
 
