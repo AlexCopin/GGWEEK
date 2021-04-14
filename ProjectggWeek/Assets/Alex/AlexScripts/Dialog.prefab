@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ed5c582d89fbd46a8670a912ada426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
   Boss: {fileID: 0}
   animCurve:
     serializedVersion: 2
@@ -69,12 +68,38 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  textsQuestions:
-  - IS IT THIS ONE?
-  - DO IT NOW!
-  - HIT THIS BUTTON
-  - HELP ME PLEASE
-  - SAVE YOURSELF
+  textsStep1:
+  - osef1
+  - osef2
+  - osef3
+  - osef4
+  - osef5
+  - osef6
+  - osef7
+  - osef8
+  - osef9
+  textsStep2:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  textsStep3:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   textsAngry:
   - NO
   - NO BUT NO
@@ -82,4 +107,5 @@ MonoBehaviour:
   - OKAY BUT NO
   - WHY ARE YOU SO DUMB?
   showTextSpeed: 0.1
+  hideTextSpeed: 0.02
   dialogPrefab: {fileID: 2814639833836413835, guid: fb0881c7312476c439148dd96a20730c, type: 3}

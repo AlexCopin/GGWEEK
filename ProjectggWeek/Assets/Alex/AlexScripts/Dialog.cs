@@ -21,8 +21,14 @@ public class Dialog : MonoBehaviour
     float delayAnswers = 2.0f;
 
     public AnimationCurve animCurve;
-    public string[] textsQuestions;
+    public string[] textsStep1; //Linéaire-Tuto
+    public string[] textsStep2;//Simon
+    public string[] textsStep3;//Questions Meta
     public string[] textsAngry;
+
+    bool step1 = false;
+    bool step2 = false;
+    bool step3 = false;
     int currentIndexDialog = 0;
     public float showTextSpeed = 0.1f;
     public float hideTextSpeed = 0.05f;
@@ -32,6 +38,7 @@ public class Dialog : MonoBehaviour
 
     void Start()
     {
+        step1 = true;
         inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
         Boss = GameObject.Find("Boss");
 
@@ -40,8 +47,8 @@ public class Dialog : MonoBehaviour
         currentDialog = Instantiate<GameObject>(dialogPrefab).GetComponentInChildren<PopDialog>();
         currentDialog.showTextDelay = showTextSpeed;
         currentDialog.hideTextDelay = hideTextSpeed;
-        currentDialog.firstText = textsQuestions[0];
-        currentDialog.ChangeText(textsQuestions[currentIndexDialog]);
+        currentDialog.firstText = textsStep1[0];
+        currentDialog.ChangeText(textsStep1[currentIndexDialog]);
 
     }
 
@@ -55,7 +62,9 @@ public class Dialog : MonoBehaviour
         if(delayAnswers <= 0)
         {
             answered = false;
-            delayAnswers = 2.0f;
+            Boss.GetComponent<Animator>().SetBool("angry", false);
+            Boss.GetComponent<Animator>().SetBool("smug", false);
+            delayAnswers = 3.0f;
         }
     }
     void OnGUI()
@@ -65,32 +74,72 @@ public class Dialog : MonoBehaviour
         {
             if ( Inputs.GetName(typeof(Inputs), inputNeeded) == e.keyCode.ToString()) 
             {
-                TestInput(true);
+                if(step1)
+                    TestInputStep1(true);
+                if (step2) 
+                {
+                    TestInputStep2(true);
+                }
+                if (step3)
+                {
+
+                }
             }
-            else 
+            else
             {
-                TestInput(false);
+                if(step1)
+                    TestInputStep1(false);
+                if (step2)
+                {
+                    TestInputStep2(false);
+                }
+                if (step3)
+                {
+
+                }
             }
             //Debug.Log("Detected key code: " + e.keyCode);
         }
     }
-    public void TestInput(bool goodInput)
+    public void TestInputStep1(bool goodInput)
     {
-
         if (goodInput && !answered)
         {
             answered = true;
             currentIndexDialog++;
             cam.CamZoom(Boss, 4, 2);
-            currentDialog.ChangeText(textsQuestions[currentIndexDialog]);
+            currentDialog.ChangeText(textsStep1[currentIndexDialog]);
             inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
             Debug.Log(Inputs.GetName(typeof(Inputs), inputNeeded));
+            Boss.GetComponent<Animator>().SetBool("angry", true);
         }
         else if(!goodInput && !answered)
         {
             answered = true;
             cam.CamShake(0.5f, 0.2f);
             currentDialog.ChangeText(textsAngry[Random.Range(0, textsAngry.Length)]);
+            Boss.GetComponent<Animator>().SetBool("smug", true);
+        }
+    }
+
+    public void TestInputStep2(bool goodInput)
+    {
+        if (goodInput && !answered)
+        {
+            answered = true;
+            currentIndexDialog++;
+            cam.CamZoom(Boss, 4, 2);
+            currentDialog.ChangeText(textsStep1[currentIndexDialog]);
+            inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
+            Debug.Log(Inputs.GetName(typeof(Inputs), inputNeeded));
+            Boss.GetComponent<Animator>().SetBool("angry", true);
+        }
+        else if (!goodInput && !answered)
+        {
+            answered = true;
+            cam.CamShake(0.5f, 0.2f);
+            currentDialog.ChangeText(textsAngry[Random.Range(0, textsAngry.Length)]);
+            Boss.GetComponent<Animator>().SetBool("smug", true);
         }
     }
 }
