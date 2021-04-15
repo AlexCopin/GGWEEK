@@ -23,22 +23,28 @@ public class ButtonDisplay : MonoBehaviour
         switch (letter) 
         {
             case "A":
-                Buttons[0].GetComponent<Animation>().Play("ButtonAPushed");
+                Buttons[0].GetComponent<Animator>().Play("ButtonAPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             case "Z":
-                Buttons[1].GetComponent<Animation>().Play("ButtonZPushed");
+                Buttons[1].GetComponent<Animator>().Play("ButtonZPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             case "E":
-                Buttons[2].GetComponent<Animation>().Play("ButtonEPushed");
+                Buttons[2].GetComponent<Animator>().Play("ButtonEPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             case "Q":
-                Buttons[3].GetComponent<Animation>().Play("ButtonQPushed");
+                Buttons[3].GetComponent<Animator>().Play("ButtonQPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             case "S":
-                Buttons[4].GetComponent<Animation>().Play("ButtonSPushed");
+                Buttons[4].GetComponent<Animator>().Play("ButtonSPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             case "D":
-                Buttons[5].GetComponent<Animation>().Play("ButtonDPushed");
+                Buttons[5].GetComponent<Animator>().Play("ButtonDPushed");
+                StartCoroutine(ReleaseButton(letter));
                 break;
             default:
                 Debug.Log("Another input");
@@ -55,5 +61,33 @@ public class ButtonDisplay : MonoBehaviour
                 Leds[i].GetComponent<SpriteRenderer>().color = Color.white;
             }
         }
+    }
+    IEnumerator ReleaseButton(string letter)
+    {
+        switch (letter)
+        {
+            case "A":
+                Buttons[0].GetComponent<Animator>().Play("ButtonAFree");
+                break;
+            case "Z":
+                Buttons[1].GetComponent<Animator>().Play("ButtonZFree");
+                break;
+            case "E":
+                Buttons[2].GetComponent<Animator>().Play("ButtonEFree");
+                break;
+            case "Q":
+                Buttons[3].GetComponent<Animator>().Play("ButtonQFree");
+                break;
+            case "S":
+                Buttons[4].GetComponent<Animator>().Play("ButtonSFree");
+                break;
+            case "D":
+                Buttons[5].GetComponent<Animator>().Play("ButtonDFree");
+                break;
+            default:
+                Debug.Log("Another input");
+                break;
+        }
+        yield return new WaitForSeconds(0.2f);
     }
 }

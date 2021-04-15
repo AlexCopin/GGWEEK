@@ -25,8 +25,8 @@ public class PopDialog : MonoBehaviour
 
     void Update()
     {
-        bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
-        textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
+        bubbleBar.transform.localScale = new Vector3(Mathf.Lerp(0, 1.6f, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1.6f, animCurve.Evaluate(Time.time)), 1);
+        textBubble.transform.localScale = new Vector3(Mathf.Lerp(0, 1.0f, animCurve.Evaluate(Time.time)), Mathf.Lerp(0, 1, animCurve.Evaluate(Time.time)), 1);
         if (lerp > lerpValue)
         {
             lerp = 0.0f;
