@@ -8,10 +8,12 @@ public class DisplaySimon : MonoBehaviour
     public Dialog dialogGO;
     public Text textSimon;
     public float showSimonDelay = 1.0f;
+    public ButtonDisplay buttonDisplayScript;
     bool displaySimon;
     // Start is called before the first frame update
     void Start()
     {
+        buttonDisplayScript = GameObject.Find("Buttons").GetComponent<ButtonDisplay>();
         dialogGO = GameObject.Find("Dialog").GetComponent<Dialog>();
         textSimon = GameObject.Find("TextSimon").GetComponent<Text>();
     }
@@ -20,15 +22,16 @@ public class DisplaySimon : MonoBehaviour
     void Update()
     {
     }
-    public void ShowTextSimon(string[] inputArray)
+    public void ShowTextSimon(string[] inputArray, Dialog.Inputs[] inputs)
     {
-        StartCoroutine(ShowInputsSimon(inputArray));
+        StartCoroutine(ShowInputsSimon(inputArray, inputs));
     }
-    IEnumerator ShowInputsSimon(string[] inputArray)
+    IEnumerator ShowInputsSimon(string[] inputArray, Dialog.Inputs[] inputs)
     {
         for (int i = 0; i < inputArray.Length; i++)
         {
             textSimon.text = inputArray[i];
+            buttonDisplayScript.LightLED(Color.red, (int)inputs[i]);
             yield return new WaitForSeconds(showSimonDelay);
         }
         textSimon.text = "";
