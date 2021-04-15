@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PopDialog : MonoBehaviour
 {
     public AnimationCurve animCurve;
-    public string firstText;
     private string currentText = "";
     string previousText = "";
     public float showTextDelay;
@@ -21,7 +20,6 @@ public class PopDialog : MonoBehaviour
     {
         bubbleBar = GameObject.Find("BubbleBar");
         textBubble = GameObject.Find("BubbleText").GetComponent<Text>();
-        previousText = firstText;
     }
 
 

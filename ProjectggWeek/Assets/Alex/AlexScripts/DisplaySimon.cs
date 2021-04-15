@@ -14,6 +14,7 @@ public class DisplaySimon : MonoBehaviour
     void Start()
     {
         buttonDisplayScript = GameObject.Find("Buttons").GetComponent<ButtonDisplay>();
+        buttonDisplayScript.gameObject.SetActive(false);
         dialogGO = GameObject.Find("Dialog").GetComponent<Dialog>();
         textSimon = GameObject.Find("TextSimon").GetComponent<Text>();
     }

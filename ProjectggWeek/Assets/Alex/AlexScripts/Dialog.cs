@@ -16,45 +16,48 @@ public class Dialog : MonoBehaviour
     Inputs inputNeeded;
     Inputs[] inputsNeededSimon;
     public string[] inputsLetterSimon;
-    public GameObject canvasUI;
+    GameObject canvasUI;
+    GameObject Boss;
+    PopDialog currentDialog;
+    ButtonDisplay buttonDisplayScript;
+
     int numberOfInputs = Inputs.GetValues(typeof(Inputs)).Length;
     CameraScript cam;
-    public GameObject Boss;
-    bool answered = false;
-    float delayAnswers;
-    public float delayAnswersValue = 3.0f;
-
     public AnimationCurve animCurve;
+    [Header("Texts")]
+    public string[] textsIntro;
     public string[] textsStep1; //Linéaire-Tuto
+    public string[] textsInterStep0102;
     public string[] textsStep2;//Simon
+    public string[] textsInterStep0203;
     public string[] textsStep3;//Questions Meta
     public string[] textsAngry;
+    string[] currentTextsStory;
 
     bool step1 = false;
     bool step2 = false;
     bool step3 = false;
 
     bool gamePlaying = false; //Game Playing for dialog
-    public int countBadAnswersValue = 3;
-    public int countBadAnswers;
+    [Header("Dialog values")]
+    bool answered = false;
+    float delayAnswers;
+    public float delayAnswersValue = 3.0f;
     int currentIndexDialog = 0;
     int countStoryDialog = 0;
+    float delayDialogStory = 1.5f;
     int countSimonStep2 = 0;
     public int countSimonStep2Value = 3;
 
     public float showTextSpeed = 0.1f;
     public float hideTextSpeed = 0.05f;
-    PopDialog currentDialog;
-
-    public GameObject dialogPrefab;
-    public ButtonDisplay buttonDisplayScript;
 
     void Start()
     {
+        currentTextsStory = textsIntro;
         inputsNeededSimon = new Inputs[countSimonStep2Value];
         inputsLetterSimon = new string[countSimonStep2Value];
         delayAnswers = delayAnswersValue;
-        countBadAnswers = countBadAnswersValue;
 
         buttonDisplayScript = GameObject.Find("Buttons").GetComponent<ButtonDisplay>();
 
@@ -67,11 +70,10 @@ public class Dialog : MonoBehaviour
         canvasUI = GameObject.Find("UI");
 
         cam = GameObject.Find("MainCamera").GetComponent<CameraScript>();
-        currentDialog = Instantiate<GameObject>(dialogPrefab).GetComponentInChildren<PopDialog>();
+        currentDialog = GameObject.Find("BubbleDialog").GetComponentInChildren<PopDialog>();
         currentDialog.showTextDelay = showTextSpeed;
         currentDialog.hideTextDelay = hideTextSpeed;
-        currentDialog.firstText = textsStep1[0];
-        currentDialog.ChangeText(textsStep1[currentIndexDialog]);
+        currentDialog.ChangeText(currentTextsStory[countStoryDialog]);
 
     }
 
@@ -90,6 +92,12 @@ public class Dialog : MonoBehaviour
             delayAnswers = delayAnswersValue;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space) && !gamePlaying && delayDialogStory < 0) 
+        {
+            countStoryDialog++;
+            delayDialogStory = 1.5f;
+        }
+        delayDialogStory -= Time.deltaTime;
     }
     void OnGUI()
     {
@@ -119,12 +127,12 @@ public class Dialog : MonoBehaviour
                     case Inputs.D:
                         break;
                 }
-                if (Inputs.GetName(typeof(Inputs), inputNeeded) == e.keyCode.ToString())
+                if (Inputs.GetName(typeof(Inputs), inputNeeded) == e.keyCode.ToString() && gamePlaying)
                 {
                     TestInputStep1(true);
 
                 }
-                else
+                else if(Inputs.GetName(typeof(Inputs), inputNeeded) != e.keyCode.ToString() && gamePlaying)
                 {
                     TestInputStep1(false);
                 }
@@ -201,7 +209,7 @@ public class Dialog : MonoBehaviour
                 canvasUI.GetComponent<DisplaySimon>().ShowTextSimon(inputsLetterSimon, inputsNeededSimon);
                 return;
             }
-            cam.CamZoom(Boss, 4, 1);
+            cam.CamZoom(Boss,4.5f, 1);
             currentDialog.ChangeText(textsStep1[currentIndexDialog]);
             inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
             buttonDisplayScript.LightLED(Color.red, (int)inputNeeded);
@@ -226,7 +234,8 @@ public class Dialog : MonoBehaviour
             if (countSimonStep2 >= countSimonStep2Value)
             {
                 currentIndexDialog++;
-                cam.CamZoom(buttonDisplayScript.gameObject, 4, 2);
+                cam.CamShake(0.3f, 0.1f);
+                //cam.CamZoom(buttonDisplayScript.gameObject, 4, 2);
                 for (int i = 0; i < inputsNeededSimon.Length; i++)
                 {
                     inputsNeededSimon[i] = (Inputs)Random.Range(0, numberOfInputs);

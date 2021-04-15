@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ed5c582d89fbd46a8670a912ada426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss: {fileID: 0}
-  delayAnswersValue: 3
+  inputsLetterSimon: []
   animCurve:
     serializedVersion: 2
     m_Curve:
@@ -69,12 +68,28 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  textsIntro:
+  - FINALLY it's not early, hello friend, I'm MOODY, MOODY the cactus and yeah dude
+    im a cactus !
+  - What do you mean you've never seen a talking cactus? Well I have to admit that
+    I haven't moved from here in a long time...
+  - I have to say that she warned me that if I touched her she would make me stagnate
+    in a simulation or something like that ....
+  - Anyway, I'm a real chatterbox, sorry, let's start again, I'm MOODY glad to meet
+    you, buddy!
+  - You're doing fine ? So you're helping me out yea ? It's not very funny to be
+    stuck here for months and months without being able to see the light of day...
+  - 'Seriously I''ve been stuck next to this pc for ages it''s inhuman to do this
+    kind of thing ! '
+  - So to get me out of here you're going to use this console. It will allow you
+    to get us to the next room since the door behind you is closed.
   textsStep1:
-  - osef1
+  - So just do EXACTLY what I tell you and it will be over as quickly as your last
+    relationship.
   - osef2
-  - osef3
-  - osef4
-  - osef5
+  - So just do EXACTLY what I tell you and it will be over as quickly as your last
+    relationship.
+  textsInterStep0102: []
   textsStep2:
   - balec1
   - balec2
@@ -87,6 +102,7 @@ MonoBehaviour:
   - balec9
   - balec10
   - balec11
+  textsInterStep0203: []
   textsStep3:
   - 
   - 
@@ -98,12 +114,14 @@ MonoBehaviour:
   - 
   - 
   textsAngry:
-  - NO
-  - NO BUT NO
-  - BITCH
-  - OKAY BUT NO
-  - WHY ARE YOU SO DUMB?
+  - Careful, you've made a mistake, dont touch the button ^^
+  - HaHa you made a mistake again, it's ok just dont touch it !
+  - It's starting to be a lot but it's human error, it's simple, DON'T PRESS button
+  - FELLAS YOU HAVE 2 IQ OR WHAT?
+  - You gonna break it idiot.
+  delayAnswersValue: 3
+  countBadAnswersValue: 3
+  countBadAnswers: 0
   countSimonStep2Value: 3
-  showTextSpeed: 0.1
+  showTextSpeed: 0.03
   hideTextSpeed: 0.02
-  dialogPrefab: {fileID: 2814639833836413835, guid: fb0881c7312476c439148dd96a20730c, type: 3}

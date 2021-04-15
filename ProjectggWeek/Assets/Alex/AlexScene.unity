@@ -726,12 +726,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 49524bb56aa22324f80beb1575278e4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7417806d9e8373e4f930283f299e7ece, type: 3}
   m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 23.860193, y: 10.799999}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -745,11 +745,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741071428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.15, y: 0, z: 0}
   m_LocalScale: {x: 0.92569244, y: 0.92583185, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013301215
 GameObject:
@@ -1196,7 +1196,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1331181353
 Animator:
@@ -1468,6 +1468,129 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1691220809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1691220810}
+  - component: {fileID: 1691220811}
+  m_Layer: 0
+  m_Name: Dialog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1691220810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691220809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1691220811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691220809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ed5c582d89fbd46a8670a912ada426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputsLetterSimon: []
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1.0096908
+      value: 1.9855723
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  textsIntro:
+  - FINALLY it's not early, hello friend, I'm <b>MOODY</b>, MOODY the cactus and
+    yeah dude im a <i>cactus</i> !
+  - What do you mean you've never seen a talking cactus? Well I have to admit that
+    I haven't moved from here in a long time...
+  - I have to say that she warned me that if I touched her she would make me stagnate
+    in a simulation or something like that ....
+  - Anyway, I'm a real chatterbox, sorry, let's start again, I'm MOODY glad to meet
+    you, buddy!
+  - You're doing fine ? So you're helping me out yea ? It's not very funny to be
+    stuck here for months and months without being able to see the light of day...
+  - 'Seriously I''ve been stuck next to this pc for ages it''s inhuman to do this
+    kind of thing ! '
+  - So to get me out of here you're going to use this console. It will allow you
+    to get us to the next room since the door behind you is closed.
+  textsStep1:
+  - So just do EXACTLY what I tell you and it will be over as quickly as your last
+    relationship.
+  - osef2
+  - So just do EXACTLY what I tell you and it will be over as quickly as your last
+    relationship.
+  textsInterStep0102: []
+  textsStep2:
+  - balec1
+  - balec2
+  - balec3
+  - balec4
+  - balec5
+  - balec6
+  - balec7
+  - balec8
+  - balec9
+  - balec10
+  - balec11
+  textsInterStep0203: []
+  textsStep3:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  textsAngry:
+  - Careful, you've made a mistake, dont touch the button ^^
+  - HaHa you made a mistake again, it's ok just dont touch it !
+  - It's starting to be a lot but it's human error, it's simple, DON'T PRESS button
+  - FELLAS YOU HAVE 2 IQ OR WHAT?
+  - You gonna break it idiot.
+  delayAnswersValue: 2
+  countSimonStep2Value: 3
+  showTextSpeed: 0.02
+  hideTextSpeed: 0.01
 --- !u!1 &1832928769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,7 +1792,7 @@ Transform:
   - {fileID: 1455319687}
   - {fileID: 1013301216}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2084523659
 MonoBehaviour:
@@ -1870,79 +1993,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.6, y: -1.8472}
-  m_SizeDelta: {x: 316.9124, y: 55.2944}
+  m_AnchoredPosition: {x: 26.6, y: 3.3494}
+  m_SizeDelta: {x: 384.103, y: 93.3011}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &2280101084145261803
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2280101085693339552, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: Boss
-      value: 
-      objectReference: {fileID: 1331181350}
-    - target: {fileID: 2280101085693339552, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: textsStep1.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339552, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: textsStep1.Array.data[2]
-      value: So just do EXACTLY what I tell you and it will be over as quickly as
-        your last relationship.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339553, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280101085693339554, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
-      propertyPath: m_Name
-      value: Dialog
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c53fd49f08810ec46962ad9c428f37a2, type: 3}
 --- !u!222 &5654999285445092758
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2152,7 +2205,7 @@ RectTransform:
   m_Children:
   - {fileID: 1020539633414281194}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2180,8 +2233,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: 1f7859e0dd9fb2c44b2ce6582b01273b, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
