@@ -113,6 +113,7 @@ public class Dialog : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StoryText();
+                delayDialogStory = delayDialogStoryValue;
             }
         }
         delayDialogStory -= Time.deltaTime;
@@ -191,8 +192,8 @@ public class Dialog : MonoBehaviour
         float rand = Random.Range(0, 100);
         if(rand < 33)
         {
-            Boss.GetComponent<Animator>().SetBool("angry",true);
-            FindObjectOfType<AudioManager>().Play("moodyAngry");
+            Boss.GetComponent<Animator>().SetBool("smile", true);
+            FindObjectOfType<AudioManager>().Play("moodyLaugh");
         }
         else if(rand > 66)
         {
@@ -201,8 +202,8 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            Boss.GetComponent<Animator>().SetBool("smile", true);
-            FindObjectOfType<AudioManager>().Play("moodyLaugh");
+            Boss.GetComponent<Animator>().SetBool("cry", true);
+            FindObjectOfType<AudioManager>().Play("moodyCry");
         }
 
         if (countStoryDialog >= allStoryArrays[countStoryArray].Length && !answered)
@@ -260,12 +261,14 @@ public class Dialog : MonoBehaviour
             if (currentIndexDialog >= textsStep1.Length)//GO TO STORY2
             {
                 ActivateStory();
+                FindObjectOfType<AudioManager>().Play("victory");
                 background.GetComponent<Animator>().SetBool("scene2", true);
                 step1 = false;
                 return;
             }
             FindObjectOfType<AudioManager>().Play("moodyLaugh");
-            cam.CamZoom(Boss,4.5f, 1);
+            FindObjectOfType<AudioManager>().Play("victory");
+            //cam.CamShake(0.3f, 0.1f);
             currentDialog.ChangeText(textsStep1[currentIndexDialog]);
             inputNeeded = (Inputs)Random.Range(0, numberOfInputs);
             buttonDisplayScript.LightLED(Color.red, (int)inputNeeded);
@@ -296,6 +299,9 @@ public class Dialog : MonoBehaviour
                 if (currentIndexDialog >= textsStep2.Length)//GO TO STORY3
                 {
                     ActivateStory();
+                    FindObjectOfType<AudioManager>().Play("victory");
+                    FindObjectOfType<AudioManager>().StopPlaying("mainTheme");
+                    FindObjectOfType<AudioManager>().Play("victoryMusic");
                     background.GetComponent<Animator>().SetBool("scene3", true);
                     step2 = false;
                     return;

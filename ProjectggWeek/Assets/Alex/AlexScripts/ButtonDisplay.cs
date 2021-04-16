@@ -24,26 +24,32 @@ public class ButtonDisplay : MonoBehaviour
         {
             case "A":
                 Buttons[0].GetComponent<Animator>().Play("ButtonAPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             case "Z":
                 Buttons[1].GetComponent<Animator>().Play("ButtonZPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             case "E":
                 Buttons[2].GetComponent<Animator>().Play("ButtonEPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             case "Q":
                 Buttons[3].GetComponent<Animator>().Play("ButtonQPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             case "S":
                 Buttons[4].GetComponent<Animator>().Play("ButtonSPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             case "D":
                 Buttons[5].GetComponent<Animator>().Play("ButtonDPushed");
+                FindObjectOfType<AudioManager>().Play("buttonPressed");
                 StartCoroutine(ReleaseButton(letter));
                 break;
             default:
@@ -54,7 +60,8 @@ public class ButtonDisplay : MonoBehaviour
     public void LightLED(Color color, int index) 
     {
         Leds[index].GetComponent<SpriteRenderer>().color = color;
-        for(int i = 0; i < Leds.Length; i++)
+        FindObjectOfType<AudioManager>().Play("led");
+        for (int i = 0; i < Leds.Length; i++)
         {
             if(i != index)
             {
